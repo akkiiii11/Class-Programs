@@ -1,48 +1,73 @@
-package com.collection.sort;
+package com.hibernate;
 
-public class Employee {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-	private int empId;
-	private String name;
-	private double salary;
+// POJO - Plain old java object
+// Bean - spring 
+// Entity
+// cfg - it is configuration
+// JPA (API) super interface jakrta(its specification only its advance version)
+// Hibernate implementation
+// Hibernate, EclipseLink and Apache OpenJPA
+
+
+@Entity
+@Table(name="employee")
+public class Employee {		//create table Employee(id int, name varchar(255), dept varchar(255), salary varchar(255)) 
 	
-	public Employee(int empId, String name, double salary) {
+	@Id
+	private int id;	
+	private String name;	
+	private String dept;	
+	private int salary;
+	
+	public Employee() {
 		super();
-		this.empId = empId;
+		
+	}
+	
+		
+	public Employee(int id, String name, String dept, int salary) {
+		super();
+		this.id = id;
 		this.name = name;
+		this.dept = dept;
 		this.salary = salary;
 	}
 
-	public int getEmpId() {
-		return empId;
-	}
 
-	public void setEmpId(int empId) {
-		this.empId = empId;
+	public int getId() {
+		return id;
 	}
-
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public double getSalary() {
+	public String getDept() {
+		return dept;
+	}
+	public void setDept(String dept) {
+		this.dept = dept;
+	}
+	public int getSalary() {
 		return salary;
 	}
-
-	public void setSalary(double salary) {
+	public void setSalary(int salary) {
 		this.salary = salary;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Employee [empId=" + empId + ", name=" + name + ", salary=" + salary + "]";
+		return "Employee [id=" + id + ", name=" + name + ", dept=" + dept + ", salary=" + salary + "]";
 	}
 	
 	
-	
-	
+
 }
