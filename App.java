@@ -18,28 +18,31 @@ public class App
         
         Transaction tr = session.beginTransaction();
         
-//        Student stud = new Student();
-//        stud.setId(1);
-//        stud.setName("Akanksha");
-//        stud.setAddress("Satara");
-//        stud.setPhoneno(898989562);
-//        stud.setMarks(90);
+        Husband hs = new Husband();
+        Wife wi = new Wife();
+        
+//        hs.setHid(1);
+//        hs.sethNAme("Amitabh");
+//        hs.setWife(wi);
 //        
-//        session.save(stud);
-//        tr.commit();
-//        session.close();
-//        System.out.println("Student Add Successfully");
+//        wi.setwId(1);
+//        wi.setwName("Jaya");
+//        wi.setHusband(hs);
         
-        Department dept = new Department();
-        dept.setDepId(1);
-        dept.setDeptName("MCA Dept");
-        dept.setDeptLocation("Pune");
-        dept.setDeptHODName("MSD");
+        hs.setHid(2);
+        hs.sethNAme("Abhishek");
+        hs.setWife(wi);
         
-        session.save(dept);
+        wi.setwId(2);
+        wi.setwName("Aishwarya");
+        wi.setHusband(hs);
+        
+        session.save(wi);
+        session.save(hs);
+        
         tr.commit();
         session.close();
-        System.out.println("Department Add Successfully");
         
+        System.out.println("Husband Wife Add Successfully");
     }
 }
