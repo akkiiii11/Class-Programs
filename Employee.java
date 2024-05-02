@@ -1,73 +1,39 @@
-package com.hibernate;
+package com.corejava.lab_2;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-// POJO - Plain old java object
-// Bean - spring 
-// Entity
-// cfg - it is configuration
-// JPA (API) super interface jakrta(its specification only its advance version)
-// Hibernate implementation
-// Hibernate, EclipseLink and Apache OpenJPA
-
-
-@Entity
-@Table(name="employee")
-public class Employee {		//create table Employee(id int, name varchar(255), dept varchar(255), salary varchar(255)) 
+public class Employee {
 	
-	@Id
-	private int id;	
-	private String name;	
-	private String dept;	
-	private int salary;
-	
-	public Employee() {
-		super();
+	String name;
+	String jobTitle;
+	double salary;
+	double addSalary;
+
+	public void emp() {
+		name = "Akanksha";
+		jobTitle = "Software developer";
+		salary = 50000; 
+		addSalary = 10000;
+	}
+
+	public double updateSalary() {
 		
-	}
-	
-		
-	public Employee(int id, String name, String dept, int salary) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.dept = dept;
-		this.salary = salary;
-	}
-
-
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getDept() {
-		return dept;
-	}
-	public void setDept(String dept) {
-		this.dept = dept;
-	}
-	public int getSalary() {
+		salary = salary + addSalary;
 		return salary;
-	}
-	public void setSalary(int salary) {
-		this.salary = salary;
+//		System.out.println("Employee Updated Salary: "+updateSalary);
 	}
 	
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", dept=" + dept + ", salary=" + salary + "]";
+	public void display() {
+		  
+		System.out.println("Employee Name: " +name+ "\nEmployee Job Title: " +jobTitle+ "\nSalary: " +salary+ "\nnew Salary: " +addSalary);
+		System.out.println("Employee Updated Salary: " +updateSalary());
 	}
-	
 	
 
+	public static void main(String[] args) {
+		Employee emp1 = new Employee();
+  
+		emp1.emp();
+		emp1.display();
+		emp1.updateSalary();
+	    
+	}
 }

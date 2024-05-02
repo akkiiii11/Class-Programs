@@ -1,6 +1,6 @@
-package com.javacore.package1;
+package com.corejava.lab_3;
 
-class Vehicle1
+class Vehicle
 {
 	public void drive()
 	{
@@ -8,7 +8,7 @@ class Vehicle1
 	}
 }
 
-class Car1 extends Vehicle1
+class Car extends Vehicle
 {
 		public void drive()
 		{
@@ -20,8 +20,8 @@ public class VehicleDemo {
 
 	public static void main(String[] args) {
 	
-		Vehicle1 v = new Vehicle1();
-		Car1 c = new Car1();
+		Vehicle v = new Vehicle();
+		Car c = new Car();
 		
 		v.drive();
 		c.drive();

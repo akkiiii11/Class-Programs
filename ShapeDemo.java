@@ -1,4 +1,4 @@
-package com.javacore.package1;
+package com.corejava.lab_3;
 
 class Rectangle
 {

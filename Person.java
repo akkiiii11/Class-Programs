@@ -1,38 +1,22 @@
-package com.iodemo;
+package com.corejava.lab_2;
 
-import java.io.Serializable;
+public class Person {
 
-public class Person implements Serializable {
-	
-	private int pid;
-	private String pname;
-	
-	public Person(int pid, String pname) {
-		super();
-		this.pid = pid;
-		this.pname = pname;
+public void display(String name, int age) {
+		
+		System.out.println("Name: " +name+ ", Age: " +age);
 	}
 
-	public int getPid() {
-		return pid;
+	public static void main(String[] args) {
+		
+		Person p1 = new Person();
+		Person p2 = new Person();
+		
+		p1.display("Akanksha", 22);
+		p2.display("Nivedita", 23);
+		
+		
+
 	}
 
-	public void setPid(int pid) {
-		this.pid = pid;
-	}
-
-	public String getPname() {
-		return pname;
-	}
-
-	public void setPname(String pname) {
-		this.pname = pname;
-	}
-
-	@Override
-	public String toString() {
-		return "Person [pid=" + pid + ", pname=" + pname + "]";
-	}
-	
-	
 }

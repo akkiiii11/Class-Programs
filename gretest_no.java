@@ -1,0 +1,47 @@
+package com.corejava.lab_1;
+
+import java.util.Scanner;
+
+public class gretest_no {
+
+	public static void main(String[] args) {
+
+		        Scanner scanner = new Scanner(System.in);
+		        
+		        System.out.print("Enter the first number: ");
+		        int num1 = scanner.nextInt();
+		        
+		        System.out.print("Enter the second number: ");
+		        int num2 = scanner.nextInt();
+		        
+		        System.out.print("Enter the third number: ");
+		        int num3 = scanner.nextInt();
+		        
+		        /*int greatest = num1;
+		        
+		        if (num2 > greatest) {
+		            greatest = num2;
+		        }
+		        
+		        if (num3 > greatest) {
+		            greatest = num3;
+		        }
+		        */
+		        
+		        if (num1>num2 & num1>num2)
+		        {
+		        	System.out.println("The greatest number is: " +num1);
+		        }
+		        
+		        else if (num2>num1 & num2>num3)
+		        {
+		        	System.out.println("The greatest number is: " +num2);
+		        }
+		        
+		        else
+		        {
+		        	System.out.println("The greatest number is: " +num3);
+		        }
+		        //System.out.println("The greatest number is: " + greatest);
+		    }
+}

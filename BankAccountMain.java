@@ -1,119 +1,97 @@
-package lab_5;
+package lab_4;
 
-abstract class BankAccount
+class  BankAccount
 {
-	protected String accountNumber;
-	protected double balance;
+	String AccountNumber;
+	double balance;
 	
-	public BankAccount(String accountNumber, double balance) {
-		this.accountNumber = accountNumber;
+	BankAccount(String AccountNumber, double balance)
+	{
+		this.AccountNumber = AccountNumber;
 		this.balance = balance;
 	}
-
-	abstract void deposit(double amount);
-	
-	abstract void withdraw(double amount);
 	
 	public double getBalance()
 	{
 		return balance;
 	}
-}
-
-class SavingsAccount extends BankAccount
-{
-
-	public SavingsAccount(String accountNumber, double balance) {
-		super(accountNumber, balance);
-		
+	
+	public void deposit(double amt)
+	{
+		balance = balance + amt;
 	}
-
-	@Override
-	void deposit(double amount) {
-		
-		balance = balance + amount;
-		System.out.println("Deposit of " +amount + " into Saving Account Completed.");
-		
-	}
-
-	@Override
-	void withdraw(double amount) {
-		
-		if (amount <= balance)
+	
+	public void withdraw(double amt)
+	{
+		if(amt <= balance)
 		{
-			balance = balance - amount;
-			System.out.println("Withdrwal of " +amount+ " into Saving Account Completed.");
+			balance = balance - amt;
 		}
-		
 		else
 		{
 			System.out.println("Insufficient Balance");
 		}
-		
+	}
+}
+
+class SavingsAcoount extends BankAccount
+{
+	double withdrawalLimit;
+	
+	SavingsAcoount(String AccountNumber, double balance, double withdrawalLimit) {
+		super(AccountNumber, balance);
+		this.withdrawalLimit = withdrawalLimit;
 	}
 	
+	public void withdraw(double amt)
+	{
+		if(amt <= withdrawalLimit)
+		{
+			super.withdraw(amt);
+		}
+		else
+		{
+			System.out.println("Withdrawal limit exceeded");
+		}
+	}
 	
 }
 
-class CurrentAccount extends BankAccount
+class CheckingAcoount extends BankAccount
 {
+	double overdraftFee;
 
-	public CurrentAccount(String accountNumber, double balance) {
-		super(accountNumber, balance);
-		
+	CheckingAcoount(String AccountNumber, double balance, double overdraftFee) {
+		super(AccountNumber, balance);
+		this.overdraftFee = overdraftFee;
 	}
-
-	@Override
-	void deposit(double amount) {
-		
-		balance = balance + amount;
-		System.out.println("Deposit of " +amount + "into Current Account Completed.");
-		
-				
-	}
-
-	@Override
-	void withdraw(double amount) {
-		
-		if (amount <= balance)
+	
+	public void withdraw(double amt)
+	{
+		if(amt <= getBalance())
 		{
-			balance = balance - amount;
-			System.out.println("Withdrwal of " +amount+ "into Current Account Completed.");
+			super.withdraw(amt);
 		}
-		
 		else
 		{
-			System.out.println("Insufficient Balance");
+			System.out.println("Overdraft fee applied.");
+		    super.withdraw(amt + overdraftFee);
 		}
-		
-	}
-		
+	}	
 }
 
 public class BankAccountMain {
 
 	public static void main(String[] args) {
 		
-		SavingsAccount sa = new SavingsAccount("SA-8711", 10000);
-		sa.deposit(5000);
-		System.out.println("\nAccount Number is: " +sa.accountNumber );
-		System.out.println("Total Savings Account Balance is: " +sa.getBalance());
+		SavingsAcoount sa = new SavingsAcoount("sa-8711", 5000, 1000);
+		sa.withdraw(800);
+		System.out.println("Account Number: " +sa.AccountNumber+ ", Savings Account Balance: " +sa.getBalance());
 		
-		System.out.println();
+		CheckingAcoount ca = new CheckingAcoount("ca-2211",2000, 100);
+		ca.withdraw(200);
+		System.out.println("Account Number: " +ca.AccountNumber+ ", Checking Account Balance: " +ca.getBalance());
 		
-		sa.withdraw(100);
-		System.out.println("Total Savings Account Balance is: " +sa.getBalance()+ "\n");
-		
-		CurrentAccount ca = new CurrentAccount("CA-9856", 50000);
-		ca.deposit(10000);
-		System.out.println("\nAccount Number is: " +ca.accountNumber );
-		System.out.println("Total Savings Account Balance is: " +ca.getBalance());
-		
-		System.out.println();
-		
-		ca.withdraw(500);
-		System.out.println("Total Savings Account Balance is: " +ca.getBalance());
-
 	}
 
 }

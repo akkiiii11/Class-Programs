@@ -1,72 +1,50 @@
-package lab_5;
+package lab_4;
 
-abstract class Employee
+class Employee
 {
-	protected String name;
-	protected double baseSalary;
+	String name;
+	double salary;
 	
-	public Employee(String name, double baseSalary) {
-	
+	Employee(String name, double salary)
+	{
 		this.name = name;
-		this.baseSalary = baseSalary;
+		this.salary = salary;
 	}
-
-	abstract double calculateSalary();
 	
-	abstract void displayInfo();
+	public double calculateSalary()
+	{
+		return salary;
+	}
 }
 
 class Manager extends Employee
 {
+	double bonus;
 
-	private double bonus;
-
-	public Manager(String name, double baseSalary, double bonus) {
-		super(name, baseSalary);
+	Manager(String name, double salary, double bonus) {
+		super(name, salary);
 		this.bonus = bonus;
 	}
-
-	@Override
-	double calculateSalary() {
-		
-		return baseSalary + bonus;
-				
-	}
-
-	@Override
-	void displayInfo() {
-		
-		System.out.println("Emplyee Name : Manager : " +name);
-		System.out.println("Manager Base Salary : " +baseSalary);
-		System.out.println("Manager Bonus : " +bonus);
-		
+	
+	public double calculateSalary()
+	{
+		return salary + bonus;
 	}
 	
 }
 
 class Programmer extends Employee
 {
-	private double overtimeSalary;
+	double overtime;
 
-	public Programmer(String name, double baseSalary, double overtimeSalary) {
-		super(name, baseSalary);
-		this.overtimeSalary = overtimeSalary;
+	Programmer(String name, double salary, double overtime) {
+		super(name, salary);
+		this.overtime = overtime;
 	}
-
-	@Override
-	double calculateSalary() {
-		
-		return baseSalary + overtimeSalary;
-		
-	}
-
-	@Override
-	void displayInfo() {
-		
-		System.out.println("Employee Name : Programmer : " +name);
-		System.out.println("Programmer Base Salary : " +baseSalary);
-		System.out.println("Programmer Overtime Salary : " +overtimeSalary);
-			
+	
+	public double calculateSalary()
+	{
+		return salary + overtime;
 	}
 	
 }
@@ -75,19 +53,16 @@ public class EmployeeMain {
 
 	public static void main(String[] args) {
 		
-		Manager em = new Manager("Akanksha",40000,10000);
-		em.calculateSalary();
-		em.displayInfo();
-		
-		System.out.println("Manager Total Salary : " +em.calculateSalary());
+		Manager em = new Manager("Akanksha",50000,10000);
+		System.out.println("Manager details are: ");
+		System.out.println("Name: " +em.name+ ",Salary: " +em.salary+ ",Bonus: " +em.bonus+ ",Total Salary: " +em.calculateSalary());
+
 		System.out.println();
 		
-		Programmer ep = new Programmer("Sunny",50000,20000);
-		ep.calculateSalary();
-		ep.displayInfo();
+		Programmer ep = new Programmer("Sunny",60000,15000);
+		System.out.println("Programmer details are: ");
+		System.out.println("Name: " +ep.name+ ",Salary: " +ep.salary+ ",Bonus: " +ep.overtime+ ",Total Salary: " +ep.calculateSalary());
 		
-		System.out.println("Manager Total Salary : " +ep.calculateSalary());
-
 	}
 
 }
