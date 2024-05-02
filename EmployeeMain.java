@@ -1,58 +1,93 @@
-package com.javacore.package1;
+package lab_5;
 
-//manager is a - employee
-class Employee
+abstract class Employee
 {
-	public int salary;	// attribute of employee class
-	public Employee(int sal) // special type of method // constructor
-	{
-		salary=sal;
-	}
+	protected String name;
+	protected double baseSalary;
 	
-	public void work() // method of employee class
-	{
-		System.out.println("Working as a employee");
+	public Employee(String name, double baseSalary) {
+	
+		this.name = name;
+		this.baseSalary = baseSalary;
 	}
-	public int getSalary()
-	{
-		return salary;
-	}
+
+	abstract double calculateSalary();
+	
+	abstract void displayInfo();
 }
+
 class Manager extends Employee
 {
-	public Manager(int sal)
-	{
-		super(sal);
-	}
-	
-	public void work()
-	{
-		System.out.println("Managing the Employee");
-	}
-	
-	public void addEmployee()
-	{
-		System.out.println("Adding the new Employee");
-	}
-}
-public class EmployeeMain
-{
 
-	public static void main(String[] args)
-	{
-		Employee emp = new Employee(40000);
-		emp.getSalary();
+	private double bonus;
+
+	public Manager(String name, double baseSalary, double bonus) {
+		super(name, baseSalary);
+		this.bonus = bonus;
+	}
+
+	@Override
+	double calculateSalary() {
 		
-		Manager man = new Manager(60000);
-		man.getSalary();
+		return baseSalary + bonus;
+				
+	}
+
+	@Override
+	void displayInfo() {
 		
-		emp.work();
-		System.out.println("Employee Salary" +emp.getSalary());
+		System.out.println("Emplyee Name : Manager : " +name);
+		System.out.println("Manager Base Salary : " +baseSalary);
+		System.out.println("Manager Bonus : " +bonus);
 		
-		man.work();
-		System.out.println("Manager Salary:"+man.getSalary());
+	}
+	
+}
+
+class Programmer extends Employee
+{
+	private double overtimeSalary;
+
+	public Programmer(String name, double baseSalary, double overtimeSalary) {
+		super(name, baseSalary);
+		this.overtimeSalary = overtimeSalary;
+	}
+
+	@Override
+	double calculateSalary() {
 		
-		man.addEmployee();
+		return baseSalary + overtimeSalary;
+		
+	}
+
+	@Override
+	void displayInfo() {
+		
+		System.out.println("Employee Name : Programmer : " +name);
+		System.out.println("Programmer Base Salary : " +baseSalary);
+		System.out.println("Programmer Overtime Salary : " +overtimeSalary);
+			
+	}
+	
+}
+
+public class EmployeeMain {
+
+	public static void main(String[] args) {
+		
+		Manager em = new Manager("Akanksha",40000,10000);
+		em.calculateSalary();
+		em.displayInfo();
+		
+		System.out.println("Manager Total Salary : " +em.calculateSalary());
+		System.out.println();
+		
+		Programmer ep = new Programmer("Sunny",50000,20000);
+		ep.calculateSalary();
+		ep.displayInfo();
+		
+		System.out.println("Manager Total Salary : " +ep.calculateSalary());
+
 	}
 
 }
